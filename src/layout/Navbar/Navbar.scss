@@ -1,0 +1,153 @@
+.wrapper {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  z-index: 99;
+  opacity: 1;
+  transform: none;
+  position: fixed;
+  top: 0px;
+
+  transition: all 100ms ease;
+  height: 80px;
+  width: 100%;
+
+  &.scroll-position {
+    background-color: black;
+    box-shadow: 0 10px 12px rgb(22 33 39 / 25%);
+  }
+
+  .container {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    position: relative;
+    justify-content: space-between;
+    height: 100%;
+    color: white;
+
+    .navbar-logo {
+      width: 3rem;
+      height: 1.5rem;
+    }
+
+    .menu {
+      text-transform: uppercase;
+      font-size: 1rem;
+      list-style: none;
+      gap: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      .contact-button {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        border: 2px solid white;
+        color: white;
+        position: relative;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      @media (max-width: 770px) {
+        display: none;
+      }
+
+      li {
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        &:hover {
+          color: #54b1f4;
+        }
+      }
+    }
+
+    .small-menu {
+      &.open {
+        position: absolute;
+        top: 0;
+        left: -40px;
+        height: 100vh;
+        width: calc(100% + 80px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background-color: black;
+        color: #404040;
+        transition: 1s;
+
+        li {
+          list-style-type: none;
+          a {
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+          }
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+
+        .menuIcon {
+          color: black;
+        }
+      }
+
+      &.closed {
+        display: none;
+      }
+    }
+
+    .menuIcon {
+      @media (max-width: 770px) {
+        display: block;
+        cursor: pointer;
+        // color: black;
+        z-index: 999;
+      }
+
+      display: none;
+    }
+  }
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #fb0094
+  );
+  background-size: 500%;
+  animation: animate 20s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+  0% {
+    background-position: 500% 0;
+  }
+}

@@ -1,0 +1,140 @@
+.education-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  background-color: #404040;
+
+  .education-wrapper {
+    height: 100%;
+    width: 90%;
+    color: rgb(0, 0, 0, 0.6);
+
+    .timeline-container {
+      min-height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .education-timeline {
+      width: 80%;
+      min-height: 100vh;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      margin-top: 60px;
+    }
+
+    .education-timeline ul {
+      list-style: none;
+    }
+    .education-timeline ul li {
+      padding: 20px;
+      background-color: #1e1f22;
+      color: white;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .education-timeline ul li:last-child {
+      margin-bottom: 0;
+    }
+    .education-timeline-content h1 {
+      font-weight: 500;
+      font-size: 25px;
+      line-height: 30px;
+      margin-bottom: 10px;
+    }
+    .education-timeline-content p {
+      font-size: 16px;
+      line-height: 30px;
+      font-weight: 300;
+    }
+    .education-timeline-content .education-timeline-date {
+      font-size: 12px;
+      font-weight: 300;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .education-timeline-content .education-timeline-institute {
+      color: #54b1f4;
+    }
+
+    .education-timeline-content .education-field {
+      text-align: right;
+      margin-right: 20px;
+    }
+
+    .education-timeline-content .education-timeline-city {
+      text-align: right;
+      font-style: italic;
+      font-weight: 400;
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media only screen and (min-width: 770px) {
+  .education-timeline:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background-color: gray;
+  }
+  .education-timeline ul li {
+    width: 50%;
+    position: relative;
+    margin-bottom: 50px;
+  }
+  .education-timeline ul li:nth-child(odd) {
+    float: left;
+    clear: right;
+    transform: translateX(-30px);
+    border-radius: 20px 0px 20px 20px;
+  }
+  .education-timeline ul li:nth-child(even) {
+    position: relative;
+    float: right;
+    clear: left;
+    transform: translateX(30px);
+    border-radius: 0px 20px 20px 20px;
+  }
+  .education-timeline ul li::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: gray;
+    top: 0px;
+  }
+  .education-timeline ul li:nth-child(odd)::before {
+    transform: translate(50%, -50%);
+    right: -30px;
+  }
+  .education-timeline ul li:nth-child(even)::before {
+    transform: translate(-50%, -50%);
+    left: -30px;
+  }
+  .education-timeline-content .education-timeline-date {
+    position: absolute;
+    top: -30px;
+  }
+  .education-timeline ul li:hover::before {
+    background-color: #54b1f4;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .education-timeline {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,37 @@
+.goToTop-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .top-btn {
+    font-size: 2.4rem;
+    width: 3rem;
+    height: 3rem;
+    color: #000;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .top-btn-icon {
+      width: 28px;
+      height: 28px;
+      color: white;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .top-btn {
+      right: 0;
+      left: 45%;
+    }
+  }
+}

@@ -1,0 +1,113 @@
+.projects-section-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  .projects-section-img-content {
+    position: relative;
+
+    .projects-section-image-container {
+      border-radius: 10px;
+      height: 280px;
+      max-width: 380px;
+      cursor: pointer;
+      transition: transform 0.5s ease-in-out;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+
+      .projects-section-image {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      :hover {
+        transform: scale(1.2);
+      }
+    }
+
+    .projects-section-popup {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      margin: auto;
+      border-radius: 10px;
+      transition: 0.5s ease;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      .projects-section-description {
+        color: #333;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.4;
+        text-align: center;
+        margin-top: 1rem;
+        width: 90%;
+      }
+
+      .projects-section-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+
+        .projects-section-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: medium;
+          text-decoration: none;
+          color: #000;
+          border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          padding: 2px 4px;
+          transition: background-color 0.3s ease;
+
+          .projects-section-icon {
+            background-color: transparent;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            padding: 8px;
+          }
+
+          .projects-section-link-text {
+            color: #000;
+            font-size: 14px;
+            margin-left: 4px;
+          }
+        }
+
+        .projects-section-link:hover {
+          background-color: transparent;
+        }
+
+        .projects-section-divider {
+          width: 2px;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+
+  :hover .projects-section-popup {
+    opacity: 1;
+  }
+
+  .projects-section-title {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 8px;
+  }
+}
