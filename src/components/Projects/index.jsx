@@ -27,7 +27,7 @@ const Projects = () => {
         </div>
         <motion.div
           className="projects-subtitle"
-          variants={fadeIn("down", "tween", 0.5, 0.6)}
+          variants={fadeIn("up", "tween", 0.5, 0.6)}
         >
           Here are some of my projects
         </motion.div>

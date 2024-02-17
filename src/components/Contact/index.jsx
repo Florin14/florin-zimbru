@@ -27,19 +27,19 @@ const Contact = () => {
           <div className="contact-form-section">
             <motion.div
               className="contact-subtitle"
-              variants={fadeIn("left", "tween", 0.5, 0.6)}
+              variants={fadeIn("up", "tween", 0.5, 0.6)}
             >
               Get in touch
             </motion.div>
             <motion.div
               className="contact-title"
-              variants={fadeIn("left", "tween", 0.7, 0.6)}
+              variants={fadeIn("up", "tween", 0.7, 0.6)}
             >
               Contact me
             </motion.div>
             <motion.div
               className="contact-info-wrapper"
-              variants={fadeIn("left", "tween", 0.9, 0.6)}
+              variants={fadeIn("up", "tween", 0.9, 0.6)}
             >
               <a
                 href="mailto:zimbru.florin.4@gmail.com"

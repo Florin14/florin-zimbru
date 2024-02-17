@@ -17,7 +17,7 @@ export const WorkCard = () => {
           <motion.div
             key={data.id}
             className="projects-section-card"
-            variants={fadeIn("left", "tween", 0.5 + index * 0.1, 0.6)}
+            variants={fadeIn("up", "tween", 0.5 + index * 0.1, 0.6)}
           >
             <div className="projects-section-img-content">
               <div className="projects-section-image-container">

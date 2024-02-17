@@ -1,3 +1,4 @@
+import { Tooltip } from "@mui/material";
 import "./GoToTop.scss";
 
 import React, { useEffect, useState } from "react";
@@ -30,9 +31,11 @@ export const GoToTop = () => {
   return (
     <section className="goToTop-wrapper">
       {isVisible && (
-        <div className="top-btn" onClick={goToBtn}>
-          <BiArrowToTop className="top-btn-icon" />
-        </div>
+        <Tooltip title="To top" placement="top">
+          <div className="top-btn" onClick={goToBtn}>
+            <BiArrowToTop className="top-btn-icon" />
+          </div>
+        </Tooltip>
       )}
     </section>
   );
