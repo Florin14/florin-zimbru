@@ -2,9 +2,11 @@ import "./Education.scss";
 
 import React from "react";
 
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { motion } from "framer-motion";
-import { fadeIn, staggerChildren, textVariant } from "../../utils/motion";
+
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+
+import { staggerChildren, textVariant } from "../../utils/motion";
 
 const Education = () => {
   return (

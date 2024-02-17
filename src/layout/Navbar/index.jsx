@@ -1,13 +1,11 @@
+import "./Navbar.scss";
+
 import React, { useEffect, useRef, useState } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
-
 import { motion } from "framer-motion";
-import { getMenuStyles, headerVariants } from "../../utils/motion";
-// import useOutsideAlerter from "../../hooks/useOutsideAlerter";
 
 import sigla from "../../assets/img/Sigla.png";
-
-import "./Navbar.scss";
+import { getMenuStyles, headerVariants } from "../../utils/motion";
 import { ContactButton } from "../ContactButton";
 
 const Navbar = () => {
@@ -36,12 +34,6 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  // to handle click outside of sidebar on mobile
-  // useOutsideAlerter({
-  //   menuRef,
-  //   setMenuOpened,
-  // });
 
   return (
     <motion.div
@@ -118,8 +110,6 @@ const Navbar = () => {
           </li>
           <ContactButton />
         </ul>
-
-        {/* for medium and small screens */}
         <div
           className={"menuIcon"}
           onClick={() => {

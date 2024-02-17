@@ -1,4 +1,4 @@
-import "./ContactButton.scss"
+import "./ContactButton.scss";
 
 export const ContactButton = () => {
   return (

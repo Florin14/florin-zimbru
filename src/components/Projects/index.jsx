@@ -3,13 +3,12 @@ import "./Projects.scss";
 import React from "react";
 
 import { Link } from "react-router-dom";
-// import { RxExternalLink } from "react-icons/rx";
-import { AiOutlineGithub } from "react-icons/ai";
-import { projectsData } from "../../utils/data";
-import { WorkCard } from "../../layout/WorkCard";
 import { motion } from "framer-motion";
-import { fadeIn, staggerChildren } from "../../utils/motion";
+
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
+import { WorkCard } from "../../layout/WorkCard";
+import { fadeIn, staggerChildren } from "../../utils/motion";
 
 const Projects = () => {
   return (

@@ -1,9 +1,12 @@
-import { AiOutlineGithub } from "react-icons/ai";
-import { projectsData } from "../../utils/data";
 import "./WorkCard.scss";
-import { Link } from "react-router-dom";
-import LaunchIcon from "@mui/icons-material/Launch";
+
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { AiOutlineGithub } from "react-icons/ai";
+
+import LaunchIcon from "@mui/icons-material/Launch";
+
+import { projectsData } from "../../utils/data";
 import { fadeIn } from "../../utils/motion";
 
 export const WorkCard = () => {

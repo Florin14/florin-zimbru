@@ -1,17 +1,15 @@
 import "./Resume.scss";
 
 import React, { useState } from "react";
-
-import Education from "../Education";
-import Skills from "../Skills";
-import Experience from "../Experience";
+import { FaNetworkWired, FaCode } from "react-icons/fa";
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import SchoolIcon from "@mui/icons-material/School";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { FaCode } from "react-icons/fa";
-import { FaNetworkWired } from "react-icons/fa";
+
+import Education from "../Education";
+import Skills from "../Skills";
+import Experience from "../Experience";
 
 const TabPanel = (props) => {
   const { children, value, index, className, ...other } = props;
@@ -30,7 +28,6 @@ const TabPanel = (props) => {
 };
 
 const Resume = () => {
-  // const [tab, setTab] = useState("EDUCATION");
   const [currentTab, setCurrentTab] = useState(0);
 
   const handleChange = (event, newValue) => {

@@ -3,7 +3,6 @@ import "./About.scss";
 import React from "react";
 
 import { TypeAnimation } from "react-type-animation";
-
 import { AiFillGithub, AiFillInstagram } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
@@ -19,7 +18,8 @@ const About = () => {
         <div className="image-section">
           <div className="info-image"></div>
           <div className="quote-section">
-            "Acesta ar trebui sa fie un quote smecher", Zimbru Florin
+            "Do the best you can until you know better. Then when you know
+            better, do better.", Maya Angelou
           </div>
         </div>
         <div className="info-data">

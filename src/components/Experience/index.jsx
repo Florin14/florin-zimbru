@@ -3,8 +3,10 @@ import "./Experience.scss";
 import React from "react";
 
 import { motion } from "framer-motion";
+
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { fadeIn, staggerChildren, textVariant } from "../../utils/motion";
+
+import { staggerChildren, textVariant } from "../../utils/motion";
 
 const Experience = () => {
   return (

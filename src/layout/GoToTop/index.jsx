@@ -1,4 +1,5 @@
 import "./GoToTop.scss";
+
 import React, { useEffect, useState } from "react";
 import { BiArrowToTop } from "react-icons/bi";
 

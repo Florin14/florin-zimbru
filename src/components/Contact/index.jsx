@@ -2,14 +2,15 @@ import React from "react";
 
 import "./Contact.scss";
 
-import { FaLinkedinIn } from "react-icons/fa";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import footerImg from "../../assets/img/footerImage.png";
-import { IconButton } from "@mui/material";
-import { ContactShape } from "../../layout/ContactShape";
-
 import { motion } from "framer-motion";
-import { fadeIn, staggerChildren, textVariant } from "../../utils/motion";
+import { FaLinkedinIn } from "react-icons/fa";
+
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import { IconButton } from "@mui/material";
+
+import footerImg from "../../assets/img/footerImage.png";
+import { ContactShape } from "../../layout/ContactShape";
+import { fadeIn, staggerChildren } from "../../utils/motion";
 
 const Contact = () => {
   return (
