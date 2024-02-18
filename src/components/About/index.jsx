@@ -18,7 +18,7 @@ const About = () => {
           <div className="info-image"></div>
           <div className="quote-section">
             "Do the best you can until you know better. Then when you know
-            better, do better.", Maya Angelou
+            better, do better", Maya Angelou
           </div>
         </div>
         <div className="info-data">
