@@ -1,11 +1,9 @@
 import "./Resume.scss";
 
 import React, { useState } from "react";
-import { FaNetworkWired, FaCode } from "react-icons/fa";
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import SchoolIcon from "@mui/icons-material/School";
 
 import Education from "../Education";
 import Skills from "../Skills";
@@ -51,19 +49,16 @@ const Resume = () => {
             aria-label="icon position tabs"
           >
             <Tab
-              icon={<SchoolIcon />}
               iconPosition="start"
               label="Education"
               classes={{ root: "inactive-tab", selected: "selected-tab" }}
             />
             <Tab
-              icon={<FaCode style={{ width: 22, height: 18 }} />}
               iconPosition="start"
               label="Skills"
               classes={{ root: "inactive-tab", selected: "selected-tab" }}
             />
             <Tab
-              icon={<FaNetworkWired style={{ width: 22, height: 18 }} />}
               iconPosition="start"
               label="Experience"
               classes={{ root: "inactive-tab", selected: "selected-tab" }}

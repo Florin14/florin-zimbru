@@ -108,7 +108,11 @@ const Navbar = () => {
               Projects
             </a>
           </li>
-          <ContactButton />
+          <ContactButton
+            callback={() => {
+              setMenuOpened(false);
+            }}
+          />
         </ul>
         <div
           className={"menuIcon"}

@@ -1,8 +1,13 @@
 import "./ContactButton.scss";
 
-export const ContactButton = () => {
+export const ContactButton = ({ callback }) => {
   return (
-    <li className="contact-button">
+    <li
+      className="contact-button"
+      onClick={() => {
+        callback();
+      }}
+    >
       <a href="#contact">Contact</a>
     </li>
   );

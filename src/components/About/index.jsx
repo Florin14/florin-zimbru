@@ -67,7 +67,7 @@ const About = () => {
                   </a>
                 </Tooltip>
               </li>
-              <li>
+              {/* <li>
                 <Tooltip title="Instagram">
                   <a href="https://www.instagram.com/florin.zimbru/">
                     <AiFillInstagram className="social-media-icon " />
@@ -87,7 +87,7 @@ const About = () => {
                     <FaXTwitter className="social-media-icon " />
                   </a>
                 </Tooltip>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

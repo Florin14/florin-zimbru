@@ -64,6 +64,24 @@
       .inactive-tab {
         font-size: 14px;
         color: white;
+        height: 75px;
+      }
+
+      .tab-icon {
+        width: 22;
+        height: 18;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .resume-container {
+    .resume-wrapper {
+      .resume-tabs-wrapper {
+        .inactive-tab {
+          max-width: 100px;
+        }
       }
     }
   }

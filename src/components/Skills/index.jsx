@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import { skills } from "../../utils/data";
 import { fadeIn, staggerChildren } from "../../utils/motion";
+import { Tooltip } from "@mui/material";
 
 const Skills = () => {
   return (
@@ -23,16 +24,23 @@ const Skills = () => {
         >
           {skills?.map((skill, index) => (
             <motion.div
-              variants={fadeIn("down", "tween", 0.5 + index * 0.2, 0.6)}
+              key={skill?.title}
+              variants={fadeIn("up", "tween", 0.5 + index * 0.2, 0.6)}
               className="skills-section"
             >
               <h2 className="skill-title">{skill?.title}</h2>
               <div className="skills-list">
                 {skill?.skills.map((item) => (
-                  <div className="skill-item">
-                    <img className="skill-image" src={item?.image} />
-                    {item?.name}
-                  </div>
+                  <Tooltip
+                    key={item?.name}
+                    title={item?.tooltip}
+                    placement="top"
+                  >
+                    <div className="skill-item">
+                      <img className="skill-image" src={item?.image} />
+                      {item?.name}
+                    </div>
+                  </Tooltip>
                 ))}
               </div>
             </motion.div>
