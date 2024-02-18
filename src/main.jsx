@@ -6,7 +6,7 @@ import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.NEXT_PUBLIC_BASE_URL}>
       <App />
     </BrowserRouter>
   </React.StrictMode>
