@@ -3,13 +3,12 @@ import "./About.scss";
 import React from "react";
 
 import { TypeAnimation } from "react-type-animation";
-import { AiFillGithub, AiFillInstagram } from "react-icons/ai";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
+import { AiFillGithub } from "react-icons/ai";
+import { FaLinkedinIn } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import { Tooltip } from "@mui/material";
 
-import ResumePDF from "../../assets/files/ResumePDF.pdf";
+import ResumeZimbruGrigoreFlorin from "../../assets/files/ResumeZimbruGrigoreFlorin.pdf";
 
 const About = () => {
   return (
@@ -45,7 +44,7 @@ const About = () => {
             <a href="#contact" className="info-contact-button">
               <span> Contact Me</span>
             </a>
-            <a href={ResumePDF} className="info-download-button" download>
+            <a href={ResumeZimbruGrigoreFlorin} className="info-download-button" download>
               <div className="download-resume-button">
                 <span>Resume</span> <FiDownload className="download-icon" />
               </div>
