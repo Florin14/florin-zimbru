@@ -1,11 +1,14 @@
 {
-  "name": "florin-zimbru-personal-portofolio",
+  "homepage": "https://florin14.github.io/florin-zimbru-personal-portfolio",
+  "name": "florin-zimbru-personal-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --port 3000",
     "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
