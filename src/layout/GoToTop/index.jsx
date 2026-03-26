@@ -1,7 +1,7 @@
-import { Tooltip } from "@mui/material";
 import "./GoToTop.scss";
 
 import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { BiArrowToTop } from "react-icons/bi";
 
 export const GoToTop = () => {
@@ -11,32 +11,32 @@ export const GoToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
-  const listenToScroll = () => {
-    let heightToHidden = 20;
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
-
-    if (winScroll > heightToHidden) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
-
   useEffect(() => {
+    const listenToScroll = () => {
+      const winScroll =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      setIsVisible(winScroll > 300);
+    };
+
     window.addEventListener("scroll", listenToScroll);
     return () => window.removeEventListener("scroll", listenToScroll);
   }, []);
 
   return (
-    <section className="goToTop-wrapper">
+    <AnimatePresence>
       {isVisible && (
-        <Tooltip title="To top" placement="top">
-          <div className="top-btn" onClick={goToBtn}>
-            <BiArrowToTop className="top-btn-icon" />
-          </div>
-        </Tooltip>
+        <motion.button
+          className="top-btn"
+          onClick={goToBtn}
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 20 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          aria-label="Scroll to top"
+        >
+          <BiArrowToTop className="top-btn-icon" />
+        </motion.button>
       )}
-    </section>
+    </AnimatePresence>
   );
 };

@@ -1,37 +1,38 @@
-.goToTop-wrapper {
+.top-btn {
+  width: 44px;
+  height: 44px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  position: relative;
+  justify-content: center;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  cursor: pointer;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
 
-  .top-btn {
-    font-size: 2.4rem;
-    width: 3rem;
-    height: 3rem;
-    color: #000;
-    background-color: rgba(0, 0, 0, 0.35);
-    box-shadow: #808080 0px 5px 15px;
-    border-radius: 50%;
-    position: fixed;
-    bottom: 3rem;
-    right: 3rem;
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  &:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+    box-shadow: var(--shadow-glow);
+  }
 
-    .top-btn-icon {
-      width: 28px;
-      height: 28px;
-      color: white;
-    }
+  .top-btn-icon {
+    width: 22px;
+    height: 22px;
   }
 
   @media (max-width: 767px) {
-    .top-btn {
-      right: 0;
-      left: 45%;
-    }
+    right: 1rem;
+    bottom: 1rem;
+    width: 40px;
+    height: 40px;
   }
 }

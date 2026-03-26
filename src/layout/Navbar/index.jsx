@@ -1,132 +1,112 @@
 import "./Navbar.scss";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
-import { motion } from "framer-motion";
+import { IoCloseOutline } from "react-icons/io5";
 
 import sigla from "../../assets/img/Sigla.png";
-import { getMenuStyles, headerVariants } from "../../utils/motion";
-import { ContactButton } from "../ContactButton";
+
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Resume", href: "#resume" },
+  { label: "Projects", href: "#projects" },
+];
 
 const Navbar = () => {
-  const menuRef = useRef(null);
   const [menuOpened, setMenuOpened] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollPosition(window.scrollY);
+      setScrolled(window.scrollY > 20);
+
+      const sections = ["contact", "projects", "resume", "about"];
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
     };
 
     const handleResize = () => {
-      if (window.innerWidth > 770) {
-        setMenuOpened(false);
-      }
-      setWindowWidth(window.innerWidth);
+      if (window.innerWidth > 770) setMenuOpened(false);
     };
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpened ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpened]);
+
+  const closeMenu = () => setMenuOpened(false);
+
   return (
-    <motion.div
-      variants={headerVariants}
-      initial="hidden"
-      whileInView="show"
-      className={`wrapper ${scrollPosition > 0 ? "scroll-position" : ""}`}
-      viewport={{ once: true, amount: 0.25 }}
-    >
-      <div className={`container`}>
-        <div className="logo">
-          <a href="#about">
-            <img src={sigla} alt="navbar-logo" className="navbar-logo"></img>
+    <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
+      <div className="nav__inner">
+        <a href="#about" className="nav__logo" onClick={closeMenu}>
+          <img src={sigla} alt="Logo" />
+        </a>
+
+        {/* Desktop */}
+        <div className="nav__right">
+          <ul className="nav__links">
+            {navLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className={activeSection === link.href.slice(1) ? "is-active" : ""}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a href="#contact" className="nav__cta">
+            Contact
           </a>
         </div>
-        <ul
-          className={`${
-            windowWidth > 770
-              ? "menu"
-              : `small-menu ${menuOpened ? "open" : "closed"}`
-          }`}
-          ref={menuRef}
-          style={getMenuStyles(menuOpened)}
+
+        {/* Mobile toggle */}
+        <button
+          className="nav__toggle"
+          onClick={() => setMenuOpened((prev) => !prev)}
+          aria-label="Toggle menu"
         >
-          <li>
-            <a
-              href="#about"
-              onClick={() => {
-                setMenuOpened(false);
-              }}
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a
-              href="#resume"
-              onClick={() => {
-                setMenuOpened(false);
-              }}
-            >
-              Education
-            </a>
-          </li>
-          <li>
-            <a
-              href="#resume"
-              onClick={() => {
-                setMenuOpened(false);
-              }}
-            >
-              Skills
-            </a>
-          </li>
-          <li>
-            <a
-              href="#resume"
-              onClick={() => {
-                setMenuOpened(false);
-              }}
-            >
-              Experience
-            </a>
-          </li>
-          <li>
-            <a
-              href="#projects"
-              onClick={() => {
-                setMenuOpened(false);
-              }}
-            >
-              Projects
-            </a>
-          </li>
-          <ContactButton
-            callback={() => {
-              setMenuOpened(false);
-            }}
-          />
-        </ul>
-        <div
-          className={"menuIcon"}
-          onClick={() => {
-            menuOpened
-              ? (document.body.style.overflow = "hidden")
-              : (document.body.style.overflow = "");
-            setMenuOpened((prev) => !prev);
-          }}
-        >
-          <BiMenuAltRight size={30} />
-        </div>
+          {menuOpened ? (
+            <IoCloseOutline size={26} />
+          ) : (
+            <BiMenuAltRight size={26} />
+          )}
+        </button>
       </div>
-    </motion.div>
+
+      {/* Mobile menu */}
+      <div className={`nav__mobile ${menuOpened ? "is-open" : ""}`}>
+        {navLinks.map((link) => (
+          <a key={link.label} href={link.href} onClick={closeMenu}>
+            {link.label}
+          </a>
+        ))}
+        <a href="#contact" onClick={closeMenu} className="nav__mobile-cta">
+          Contact
+        </a>
+      </div>
+    </nav>
   );
 };
 

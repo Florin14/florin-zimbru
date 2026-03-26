@@ -2,18 +2,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
 
   .projects-section-img-content {
     position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-glow);
+    }
 
     .projects-section-image-container {
-      border-radius: 10px;
       height: 280px;
       max-width: 380px;
       cursor: pointer;
-      transition: transform 0.5s ease-in-out;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       overflow: hidden;
 
       .projects-section-image {
@@ -21,10 +33,11 @@
         width: 100%;
         height: 100%;
         cursor: pointer;
+        transition: transform 0.5s ease;
       }
 
-      :hover {
-        transform: scale(1.2);
+      &:hover .projects-section-image {
+        transform: scale(1.08);
       }
     }
 
@@ -35,79 +48,96 @@
       left: 0;
       right: 0;
       opacity: 0;
-      margin: auto;
-      border-radius: 10px;
-      transition: 0.5s ease;
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(5px);
+      border-radius: 16px;
+      transition: all 0.4s ease;
+      background: rgba(10, 10, 26, 0.85);
+      backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
 
       .projects-section-description {
-        color: #333;
+        color: var(--text-secondary);
         text-align: center;
-        font-size: 12px;
-        line-height: 1.4;
-        text-align: center;
+        font-size: 13px;
+        line-height: 1.5;
         margin-top: 1rem;
-        width: 90%;
+        width: 80%;
       }
 
       .projects-section-links {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 4px;
+        gap: 12px;
 
         .projects-section-link {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: medium;
           text-decoration: none;
-          color: #000;
-          border-radius: 4px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          padding: 2px 4px;
-          transition: background-color 0.3s ease;
+          color: var(--text-primary);
+          border-radius: 10px;
+          padding: 8px 16px;
+          transition: all 0.3s ease;
+          background: var(--bg-card);
+          border: 1px solid var(--border-subtle);
+
+          &:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+          }
 
           .projects-section-icon {
-            background-color: transparent;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            padding: 8px;
+            width: 28px;
+            height: 28px;
+            padding: 4px;
           }
 
           .projects-section-link-text {
-            color: #000;
+            color: inherit;
             font-size: 14px;
+            font-weight: 500;
             margin-left: 4px;
           }
         }
 
-        .projects-section-link:hover {
-          background-color: transparent;
-        }
-
         .projects-section-divider {
-          width: 2px;
-          background-color: #fff;
+          width: 1px;
+          height: 24px;
+          background-color: var(--border-subtle);
         }
       }
     }
   }
 
-  :hover .projects-section-popup {
+  &:hover .projects-section-popup {
     opacity: 1;
   }
 
   .projects-section-title {
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 600;
     margin-top: 8px;
+  }
+
+  .projects-section-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .project-tag {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent-secondary);
+      background: rgba(0, 212, 255, 0.08);
+      border: 1px solid rgba(0, 212, 255, 0.15);
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
   }
 }

@@ -1,16 +1,17 @@
 .preloader-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #2c2c2c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-primary);
+  min-height: 100vh;
 
-    .preloader-img {
-        position: absolute;
-        background-color: #2c2c2c;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 20rem;
-        height: 11rem;
-    }
+  .preloader-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18rem;
+    height: 10rem;
+    filter: brightness(1.1);
+  }
 }

@@ -13,19 +13,19 @@ const Skills = () => {
       <div className="skills-wrapper">
         <div className="skills-message">
           Here are some of my skills on which I have been working on for the
-          past year.
+          past years.
         </div>
         <motion.div
           variants={staggerChildren}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false, amount: 0.25 }}
+          viewport={{ once: true, amount: 0.15 }}
           className="skills"
         >
           {skills?.map((skill, index) => (
             <motion.div
               key={skill?.title}
-              variants={fadeIn("up", "tween", 0.5 + index * 0.2, 0.6)}
+              variants={fadeIn("up", "tween", 0.1 + index * 0.15, 0.5)}
               className="skills-section"
             >
               <h2 className="skill-title">{skill?.title}</h2>
@@ -37,7 +37,7 @@ const Skills = () => {
                     placement="top"
                   >
                     <div className="skill-item">
-                      <img className="skill-image" src={item?.image} />
+                      <img className="skill-image" src={item?.image} alt={item?.name} />
                       {item?.name}
                     </div>
                   </Tooltip>
