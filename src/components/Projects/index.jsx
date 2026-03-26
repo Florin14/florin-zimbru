@@ -17,7 +17,7 @@ const Projects = () => {
         variants={staggerChildren}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false, amount: 0.25 }}
+        viewport={{ once: true, amount: 0.15 }}
         className="projects-wrapper"
       >
         <div className="projects-title-section">
@@ -27,7 +27,7 @@ const Projects = () => {
         </div>
         <motion.div
           className="projects-subtitle"
-          variants={fadeIn("up", "tween", 0.5, 0.6)}
+          variants={fadeIn("up", "tween", 0.1, 0.5)}
         >
           Here are some of my projects
         </motion.div>

@@ -2,31 +2,45 @@ import "./About.scss";
 
 import React from "react";
 
+import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
-import { Tooltip } from "@mui/material";
 
 import ResumeZimbruGrigoreFlorin from "../../assets/files/ResumeZimbruGrigoreFlorin.pdf";
+import { fadeIn, staggerChildren } from "../../utils/motion";
 
 const About = () => {
   return (
-    <div id="about" className="about-container">
-      <div className="about-wrapper">
-        <div className="image-section">
-          <div className="info-image"></div>
-          <div className="quote-section">
-            "Do the best you can until you know better. Then when you know
-            better, do better", Maya Angelou
+    <div id="about" className="hero">
+      <div className="hero__bg-orb hero__bg-orb--1" />
+      <div className="hero__bg-orb hero__bg-orb--2" />
+
+      <motion.div
+        className="hero__content"
+        variants={staggerChildren}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.div
+          className="hero__avatar-wrapper"
+          variants={fadeIn("up", "tween", 0.1, 0.6)}
+        >
+          <div className="hero__avatar" />
+          <div className="hero__status">
+            <span className="hero__status-dot" />
+            Available for work
           </div>
-        </div>
-        <div className="info-data">
-          <div className="name-section">
-            <span>Hi, my name is </span>
-            <br />
-            <span className="name">Zimbru Grigore Florin</span>
-          </div>
+        </motion.div>
+
+        <motion.div
+          className="hero__text"
+          variants={fadeIn("up", "tween", 0.25, 0.6)}
+        >
+          <span className="hero__greeting">Hi, my name is</span>
+          <h1 className="hero__name">Zimbru Grigore Florin</h1>
           <TypeAnimation
             sequence={[
               "Full Stack Web Developer",
@@ -38,59 +52,42 @@ const About = () => {
             speed={30}
             wrapper="h2"
             repeat={Infinity}
-            className="type-animation"
+            className="hero__role"
           />
-          <div className="info-buttons-section">
-            <a href="#contact" className="info-contact-button">
-              <span> Contact Me</span>
-            </a>
-            <a href={ResumeZimbruGrigoreFlorin} className="info-download-button" download>
-              <div className="download-resume-button">
-                <span>Resume</span> <FiDownload className="download-icon" />
-              </div>
-            </a>
-          </div>
-          <div className="media-buttons-wrapper">
-            <ul className="social-media-buttons">
-              <li>
-                <Tooltip title="Github">
-                  <a href="https://github.com/Florin14">
-                    <AiFillGithub className="social-media-icon" />
-                  </a>
-                </Tooltip>
-              </li>
-              <li>
-                <Tooltip title="LinkedIn">
-                  <a href="https://www.linkedin.com/in/grigore-florin-zimbru-513706203/">
-                    <FaLinkedinIn className="social-media-icon" />
-                  </a>
-                </Tooltip>
-              </li>
-              {/* <li>
-                <Tooltip title="Instagram">
-                  <a href="https://www.instagram.com/florin.zimbru/">
-                    <AiFillInstagram className="social-media-icon " />
-                  </a>
-                </Tooltip>
-              </li>
-              <li>
-                <Tooltip title="Facebook">
-                  <a href="https://www.facebook.com/zimbru.florin.3/">
-                    <FaFacebook className="social-media-icon " />
-                  </a>
-                </Tooltip>
-              </li>
-              <li>
-                <Tooltip title="Twitter">
-                  <a href=" https://twitter.com/FlorinZimbru">
-                    <FaXTwitter className="social-media-icon " />
-                  </a>
-                </Tooltip>
-              </li> */}
-            </ul>
-          </div>
-        </div>
-      </div>
+        </motion.div>
+
+        <motion.p
+          className="hero__quote"
+          variants={fadeIn("up", "tween", 0.4, 0.6)}
+        >
+          "Do the best you can until you know better. Then when you know
+          better, do better" — Maya Angelou
+        </motion.p>
+
+        <motion.div
+          className="hero__actions"
+          variants={fadeIn("up", "tween", 0.5, 0.6)}
+        >
+          <a href="#contact" className="hero__btn hero__btn--primary">
+            Contact Me
+          </a>
+          <a href={ResumeZimbruGrigoreFlorin} className="hero__btn hero__btn--secondary" download>
+            Resume <FiDownload className="hero__btn-icon" />
+          </a>
+        </motion.div>
+
+        <motion.div
+          className="hero__socials"
+          variants={fadeIn("up", "tween", 0.6, 0.6)}
+        >
+          <a href="https://github.com/Florin14" target="_blank" rel="noopener noreferrer" className="hero__social">
+            <AiFillGithub />
+          </a>
+          <a href="https://www.linkedin.com/in/grigore-florin-zimbru-513706203/" target="_blank" rel="noopener noreferrer" className="hero__social">
+            <FaLinkedinIn />
+          </a>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

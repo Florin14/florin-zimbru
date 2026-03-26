@@ -1,81 +1,79 @@
 import "./Resume.scss";
 
-import React, { useState } from "react";
-
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 
 import Education from "../Education";
 import Skills from "../Skills";
 import Experience from "../Experience";
+import { fadeIn, staggerChildren } from "../../utils/motion";
 
-const TabPanel = (props) => {
-  const { children, value, index, className, ...other } = props;
-  return (
-    <div
-      className={className}
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && children}
-    </div>
-  );
-};
+const tabs = [
+  { id: 0, label: "Experience" },
+  { id: 1, label: "Skills" },
+  { id: 2, label: "Education" },
+];
 
 const Resume = () => {
   const [currentTab, setCurrentTab] = useState(0);
+  const tabsRef = useRef([]);
+  const [sliderStyle, setSliderStyle] = useState({});
 
-  const handleChange = (event, newValue) => {
-    setCurrentTab(newValue);
-  };
+  useEffect(() => {
+    const el = tabsRef.current[currentTab];
+    if (el) {
+      setSliderStyle({
+        width: el.offsetWidth,
+        transform: `translateX(${el.offsetLeft}px)`,
+      });
+    }
+  }, [currentTab]);
 
   return (
-    <div id="resume" className="resume-container">
+    <motion.div
+      id="resume"
+      className="resume-container"
+      variants={staggerChildren}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1 }}
+    >
       <div className="resume-wrapper">
-        <div className="resume-title-section">
-          <div className="resume-title-bar"></div>
+        <motion.div
+          className="resume-title-section"
+          variants={fadeIn("up", "tween", 0.1, 0.5)}
+        >
+          <div className="resume-title-bar" />
           <div className="resume-title">Resume</div>
-          <div className="resume-title-bar"></div>
+          <div className="resume-title-bar" />
+        </motion.div>
+
+        <motion.div
+          className="resume-tabs"
+          variants={fadeIn("up", "tween", 0.2, 0.5)}
+        >
+          <div className="resume-tabs__track">
+            <div className="resume-tabs__slider" style={sliderStyle} />
+            {tabs.map((tab, i) => (
+              <button
+                key={tab.id}
+                ref={(el) => (tabsRef.current[i] = el)}
+                className={`resume-tabs__btn ${currentTab === tab.id ? "is-active" : ""}`}
+                onClick={() => setCurrentTab(tab.id)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        <div className="tab-content">
+          {currentTab === 0 && <Experience />}
+          {currentTab === 1 && <Skills />}
+          {currentTab === 2 && <Education />}
         </div>
-        <div className="resume-tabs-wrapper">
-          <Tabs
-            classes={{ root: "tab", scrollButtons: "tab-scroll-buttons" }}
-            value={currentTab}
-            onChange={handleChange}
-            indicatorColor="white !important"
-            aria-label="icon position tabs"
-          >
-            <Tab
-              iconPosition="start"
-              label="Education"
-              classes={{ root: "inactive-tab", selected: "selected-tab" }}
-            />
-            <Tab
-              iconPosition="start"
-              label="Skills"
-              classes={{ root: "inactive-tab", selected: "selected-tab" }}
-            />
-            <Tab
-              iconPosition="start"
-              label="Experience"
-              classes={{ root: "inactive-tab", selected: "selected-tab" }}
-            />
-          </Tabs>
-        </div>
-        <TabPanel className="tab-panel" value={currentTab} index={0}>
-          <Education />
-        </TabPanel>
-        <TabPanel className="tab-panel" value={currentTab} index={1}>
-          <Skills />
-        </TabPanel>
-        <TabPanel className="tab-panel" value={currentTab} index={2}>
-          <Experience />
-        </TabPanel>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

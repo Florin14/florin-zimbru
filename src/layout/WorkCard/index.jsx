@@ -17,7 +17,7 @@ export const WorkCard = () => {
           <motion.div
             key={data.id}
             className="projects-section-card"
-            variants={fadeIn("up", "tween", 0.5 + index * 0.1, 0.6)}
+            variants={fadeIn("up", "tween", 0.1 + index * 0.1, 0.5)}
           >
             <div className="projects-section-img-content">
               <div className="projects-section-image-container">
@@ -29,15 +29,16 @@ export const WorkCard = () => {
               </div>
               <div className="projects-section-popup">
                 <div className="projects-section-links">
-                  <Link
-                    to={data?.link}
-                    target="_blank"
-                    className="projects-section-link"
-                  >
-                    <LaunchIcon className="projects-section-icon" />
-                    <p className="projects-section-link-text">Demo</p>
-                  </Link>
-                  <br className="projects-section-divider" />
+                  {data?.link && (
+                    <Link
+                      to={data?.link}
+                      target="_blank"
+                      className="projects-section-link"
+                    >
+                      <LaunchIcon className="projects-section-icon" />
+                      <p className="projects-section-link-text">Demo</p>
+                    </Link>
+                  )}
                   <Link
                     to={data?.git}
                     target="_blank"
@@ -47,10 +48,21 @@ export const WorkCard = () => {
                     <p className="projects-section-link-text">Code</p>
                   </Link>
                 </div>
-                <p className="projects-section-description">{data?.desc}</p>
+                {data?.desc && (
+                  <p className="projects-section-description">{data?.desc}</p>
+                )}
               </div>
             </div>
             <p className="projects-section-title">{data?.title}</p>
+            {data?.tags && (
+              <div className="projects-section-tags">
+                {data.tags.map((tag) => (
+                  <span key={tag} className="project-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </motion.div>
         );
       })}

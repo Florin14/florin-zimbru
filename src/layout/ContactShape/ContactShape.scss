@@ -11,6 +11,10 @@
     position: relative;
     display: block;
     width: calc(151% + 1.3px);
-    height: 209px;
+    height: 150px;
+  }
+
+  .shape-fill {
+    fill: var(--bg-primary);
   }
 }
