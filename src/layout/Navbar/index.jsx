@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
 import { IoCloseOutline } from "react-icons/io5";
 
-import sigla from "../../assets/img/Sigla.png";
+import Logo from "../Logo";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -59,7 +59,7 @@ const Navbar = () => {
     <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
       <div className="nav__inner">
         <a href="#about" className="nav__logo" onClick={closeMenu}>
-          <img src={sigla} alt="Logo" />
+          <Logo size={28} />
         </a>
 
         {/* Desktop */}
