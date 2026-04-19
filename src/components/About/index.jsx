@@ -45,7 +45,7 @@ const About = () => {
             sequence={[
               "Full Stack Web Developer",
               2000,
-              "Databases Master's Student",
+              "Databases Master's",
               2000,
               "",
             ]}
