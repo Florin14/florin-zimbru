@@ -1,9 +1,123 @@
-import { HiOutlineDesktopComputer } from "react-icons/hi";
-import { CiMobile1 } from "react-icons/ci";
-import { MdWorkspacesOutline } from "react-icons/md";
 import vointaWeb from "../assets/img/vointa-website.png";
 import ecommerceWeb from "../assets/img/ecommerceShop.png";
 import socialNetwork from "../assets/img/socialNetwork.jpg";
+import fusionBoard1 from "../assets/img/platforms/fusion_board_1.png";
+import fusionBoard2 from "../assets/img/platforms/fusion_board_2.png";
+import fusionBoard3 from "../assets/img/platforms/fusion_board_3.png";
+import footballTracking1 from "../assets/img/platforms/football_tracking_1.png";
+import footballTracking2 from "../assets/img/platforms/football_tracking_2.png";
+import footballTracking3 from "../assets/img/platforms/football_tracking_3.png";
+import footballTracking4 from "../assets/img/platforms/football_tracking_4.png";
+import pricePrediction1 from "../assets/img/platforms/price_prediction_1.png";
+import pricePrediction2 from "../assets/img/platforms/price_prediction_2.png";
+import pricePrediction3 from "../assets/img/platforms/price_prediction_3.png";
+import pricePrediction4 from "../assets/img/platforms/price_prediction_4.png";
+
+/**
+ * @typedef {Object} Project
+ * @property {string|number} id
+ * @property {string} title
+ * @property {string} description
+ * @property {string[]} stack
+ * @property {"live"|"github"} status
+ * @property {string} [liveUrl]
+ * @property {string} [githubUrl]            Single repo (legacy / fullstack repos).
+ * @property {string} [githubFrontendUrl]    Frontend repo when split FE/BE.
+ * @property {string} [githubBackendUrl]     Backend repo when split FE/BE.
+ * @property {string[]} [highlights]
+ * @property {string} [year]
+ * @property {string} [role]
+ * @property {string} [image]    Main preview image. Bundled asset, remote URL or data URI.
+ * @property {string} [imageAlt] Accessible alt text for the main image.
+ * @property {string[]} [gallery] Optional secondary images shown in the cover gallery.
+ */
+
+const escapeXml = (value) =>
+  String(value).replace(/[<>&'"]/g, (char) => {
+    switch (char) {
+      case "<":
+        return "&lt;";
+      case ">":
+        return "&gt;";
+      case "&":
+        return "&amp;";
+      case "'":
+        return "&apos;";
+      case '"':
+        return "&quot;";
+      default:
+        return char;
+    }
+  });
+
+/**
+ * Generates a premium-looking cover image as an inline SVG data URI.
+ * Composes a layered mesh-style gradient (deep base + two soft color orbs),
+ * a subtle dot grid, a thin concentric ring around the project initials and
+ * an uppercased title strip below. Used both as bundled sample artwork and
+ * as the runtime fallback when an image URL fails to load.
+ *
+ * @param {string} label
+ * @param {[string, string]} [colors]
+ * @returns {string}
+ */
+export const createPlaceholderImage = (
+  label,
+  colors = ["#6c63ff", "#00d4ff"],
+) => {
+  const safeLabel = label || "Project";
+  const initials = safeLabel
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0]?.toUpperCase() ?? "")
+    .join("");
+
+  const [c1, c2] = colors;
+  const titleStrip = escapeXml(safeLabel.toUpperCase());
+
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' preserveAspectRatio='xMidYMid slice'>
+  <defs>
+    <linearGradient id='base' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0' stop-color='#0a0a1f'/>
+      <stop offset='1' stop-color='#15152e'/>
+    </linearGradient>
+    <radialGradient id='orbA' cx='18%' cy='22%' r='55%'>
+      <stop offset='0' stop-color='${c1}' stop-opacity='0.65'/>
+      <stop offset='1' stop-color='${c1}' stop-opacity='0'/>
+    </radialGradient>
+    <radialGradient id='orbB' cx='82%' cy='78%' r='60%'>
+      <stop offset='0' stop-color='${c2}' stop-opacity='0.55'/>
+      <stop offset='1' stop-color='${c2}' stop-opacity='0'/>
+    </radialGradient>
+    <radialGradient id='orbC' cx='65%' cy='15%' r='35%'>
+      <stop offset='0' stop-color='#ffffff' stop-opacity='0.10'/>
+      <stop offset='1' stop-color='#ffffff' stop-opacity='0'/>
+    </radialGradient>
+    <pattern id='dots' x='0' y='0' width='26' height='26' patternUnits='userSpaceOnUse'>
+      <circle cx='1.4' cy='1.4' r='1.2' fill='rgba(255,255,255,0.05)'/>
+    </pattern>
+  </defs>
+  <rect width='800' height='500' fill='url(#base)'/>
+  <rect width='800' height='500' fill='url(#orbA)'/>
+  <rect width='800' height='500' fill='url(#orbB)'/>
+  <rect width='800' height='500' fill='url(#orbC)'/>
+  <rect width='800' height='500' fill='url(#dots)'/>
+  <g transform='translate(400 232)'>
+    <circle r='138' fill='none' stroke='rgba(255,255,255,0.07)' stroke-width='1'/>
+    <circle r='102' fill='none' stroke='rgba(255,255,255,0.10)' stroke-width='1'/>
+    <text x='0' y='0' text-anchor='middle' dominant-baseline='central'
+          font-family='Inter, Poppins, sans-serif' font-size='128' font-weight='800'
+          fill='#ffffff' letter-spacing='6'>${escapeXml(initials)}</text>
+  </g>
+  <line x1='320' y1='400' x2='480' y2='400' stroke='rgba(255,255,255,0.18)' stroke-width='1'/>
+  <text x='400' y='440' text-anchor='middle'
+        font-family='Inter, Poppins, sans-serif' font-size='18' font-weight='600'
+        fill='rgba(255,255,255,0.65)' letter-spacing='5'>${titleStrip}</text>
+</svg>`;
+
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+};
 
 export const sliderSettings = {
   dots: true,
@@ -43,34 +157,131 @@ export const sliderSettings = {
   ],
 };
 
+/** @type {Project[]} */
 export const projectsData = [
   {
-    id: 1,
-    img: vointaWeb,
-    title: "Football Team Website",
-    desc: "A website for a local football team with match schedules, team info and news.",
-    link: "",
-    git: "https://github.com/Florin14/VointaTurtWebsite",
-    tags: ["React", "SCSS", "Responsive"],
+    id: "fusion-board",
+    title: "Modular Dashboard",
+    description:
+      "A unified command center that aggregates multiple independent platform services into a single dashboard, with isolated modules so one service failing never brings down the rest.",
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "MUI",
+      "Redux",
+      "FastAPI",
+      "Python",
+      "PostgreSQL",
+      "Docker",
+    ],
+    status: "github",
+    githubFrontendUrl: "https://github.com/Florin14/fusionboard-fe",
+    githubBackendUrl: "https://github.com/Florin14/fusionboard-be",
+    image: fusionBoard1,
+    imageAlt: "Preview of the Fusion Board interface",
+    gallery: [fusionBoard2, fusionBoard3],
+    highlights: [
+      "Plug-and-play platform modules with a template for adding new services in minutes",
+      "Service registry with per-platform health checks and JWT role-based access",
+      "Proxy layer integrating external APIs (e.g. football tracking) behind a unified gateway",
+    ],
+    year: "2026",
+    role: "Full-Stack Developer",
   },
   {
-    id: 2,
-    img: ecommerceWeb,
-    title: "Ecommerce Shop",
-    desc: "Full-featured online shop with product catalog, cart and checkout flow.",
-    link: "",
-    git: "https://github.com/Florin14/ecommerce-shop-fe",
-    tags: ["React", "Redux", "REST API"],
+    id: "football-tracking",
+    title: "Football Tracking",
+    description:
+      "Full-stack platform for managing a football team — FastAPI backend, React dashboard and Expo mobile app — covering live matches, player stats, attendance, rankings and tournaments. Ships with a conversational AI agent, scheduled background jobs and PDF/Excel exports",
+    stack: [
+      "FastAPI",
+      "Python",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Alembic",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Redux Toolkit",
+      "MUI",
+      "Expo",
+      "React Native",
+      "Docker",
+      "Caddy",
+    ],
+    status: "live",
+    gallery: [footballTracking2, footballTracking3, footballTracking4],
+    liveUrl: "https://football-tracking-fe.vercel.app/",
+    githubFrontendUrl: "https://github.com/Florin14/football_tracking_fe",
+    githubBackendUrl: "https://github.com/Florin14/football_tracking_be",
+    image: footballTracking1,
+    imageAlt: "Dashboard view of the football tracking platform",
+    highlights: [
+      "Modular FastAPI backend with 16 feature modules, SQLAlchemy + Alembic migrations on PostgreSQL (Neon)",
+      "Custom JWT-in-cookies auth (HS256, HttpOnly, SameSite=None cross-origin) with role-based guards and silent refresh",
+      "React + TypeScript + Vite dashboard with Redux Toolkit (15 slices), Axios interceptors, Recharts, jsPDF/xlsx export and EN/RO i18n",
+      "APScheduler background jobs for match reminders + SMTP notifications; OpenAI-powered chat agent over team data",
+      "Dockerized deploy on a VPS behind Caddy (auto-HTTPS), CI/CD via GitHub Actions; SPA on Vercel with path rewrites to the API",
+    ],
+    year: "2025-2026",
+    role: "Full-Stack Developer",
   },
   {
-    id: 3,
-    img: socialNetwork,
-    title: "Social Network",
-    desc: "A social platform with user profiles, posts, and real-time interactions.",
-    link: "",
-    git: "https://github.com/Florin14/Social-Network",
-    tags: ["React", "Node.js", "MongoDB"],
+    id: "price-prediction",
+    title: "Romanian Real Estate Price Predictor",
+    description:
+      "Full-stack ML platform estimating property prices across Romania from 117K+ real listings — premium editorial UI, stacking ensemble, similar-property matching and interactive maps",
+    stack: ["Next.js", "TypeScript", "React", "Tailwind", "Radix UI", "Redux", "MapLibre", "FastAPI", "Python", "XGBoost", "LightGBM", "PostgreSQL", "Docker"],
+    status: "github",
+    githubFrontendUrl: "https://github.com/Florin14/price-prediction-fe",
+    githubBackendUrl: "https://github.com/Florin14/price-prediction-be",
+    image: pricePrediction1,
+    gallery: [pricePrediction2, pricePrediction3, pricePrediction4],
+    imageAlt: "Dashboard view of the price prediction app",
+    highlights: [
+      "Stacking ensemble (XGBoost + LightGBM + RF) on 117K+ listings with OSMnx POI geospatial features",
+      "3-step prediction flow → serif price card, confidence interval, valuation index, map-paired comparables",
+      "Custom design system: Tailwind v4 + 24 Radix/shadcn primitives, Fraunces + Inter, warm-neutral palette, dark/light",
+      "JWT (RS256) + Google OAuth, bilingv RO/EN, guest & customer flows, deployed on Render"
+    ],
+    year: "2025",
+    role: "Full-Stack Developer",
   },
+  // {
+  //   id: "social-network",
+  //   title: "Social Network",
+  //   description:
+  //     "A social platform with user profiles, posts, comments and real-time interactions.",
+  //   stack: ["React", "Node.js", "MongoDB", "Socket.IO"],
+  //   status: "github",
+  //   githubUrl: "https://github.com/Florin14/Social-Network",
+  //   image: socialNetwork,
+  //   imageAlt: "Feed view of the social network app",
+  //   highlights: [
+  //     "Real-time feed updates over WebSockets",
+  //     "Image uploads with on-the-fly resizing",
+  //   ],
+  //   year: "2022",
+  //   role: "Full-stack Developer",
+  // },
+  // {
+  //   id: "vointa-turt",
+  //   title: "Football Team Website",
+  //   description:
+  //     "Marketing site for a local football team with match schedules, squad profiles and a news feed.",
+  //   stack: ["React", "SCSS", "Vite", "Responsive"],
+  //   status: "github",
+  //   githubUrl: "https://github.com/Florin14/VointaTurtWebsite",
+  //   image: vointaWeb,
+  //   imageAlt: "Homepage of the Vointa Turt football team website",
+  //   highlights: [
+  //     "Mobile-first layout with full keyboard navigation",
+  //     "Reusable SCSS theme tokens shared across pages",
+  //   ],
+  //   year: "2023",
+  //   role: "Frontend Developer",
+  // },
 ];
 
 export const skills = [
